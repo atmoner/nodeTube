@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+<style type="text/css">
+.spinner {
+  margin: 50px auto;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  text-align: center;
+  
+  -webkit-animation: sk-rotate 2.0s infinite linear;
+  animation: sk-rotate 2.0s infinite linear;
+}
+
+.dot1, .dot2 {
+  width: 60%;
+  height: 60%;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  background-color: #333;
+  border-radius: 100%;
+  
+  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+  animation: sk-bounce 2.0s infinite ease-in-out;
+}
+
+.dot2 {
+  top: auto;
+  bottom: 0;
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+@-webkit-keyframes sk-bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bounce {
+  0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+</style>
+    <title>nodeTube</title>
+ 
+  </head>
+  <body>
+<span class="uk-label uk-label-success uk-position-top-right" style="display: none;" id="licenceValid">Licence valide!</span>
+<span class="uk-label uk-label-warning uk-position-top-right" style="display: none;" id="licenceInvalid">Licence invalide</span>
+
+<br /><div align="center"> <img src="css/1.gif" width='200' height='100'></div>
+<div class="uk-container" id="all">
+
+<br />
+<div id="succes" style="display: none;">
+<div class="uk-alert-success" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p>Les informations de la vidéo ont ete importées</p>
+</div>
+</div>
+<div uk-grid> 
+    <div class="uk-width-1-3@m">  
+		<div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-margin">
+        <div class="uk-inline">
+            <a class="uk-form-icon uk-form-icon-flip" href="#" uk-icon="icon: link"></a>
+            <input class="uk-input uk-form-width-large" type="text" id="ytUrl" value="https://www.youtube.com/watch?v=4ZhH-o-jzMM">
+        </div><br /><br />
+    <button class="uk-button uk-button-default" id="start">Video info</button>
+	<button class="uk-button uk-button-default" id="startDl">Télécharger</button>
+    </div>
+		</div>
+	</div>
+    <div class="uk-width-expand@m">  
+		<div class="uk-card uk-card-default uk-card-body">  
+			<div class="spinner" id="spinner"  style="display: none;">
+			  <div class="dot1"></div>
+			  <div class="dot2"></div>
+			</div>
+ 	 
+			<div class="uk-child-width-expand@s" uk-grid>
+				<div>
+			 		<div id="returnImg"></div> 
+				</div>
+				<div>
+					<div id="id"></div> 
+			 		<div id="title"></div> 
+ 					
+					<div id="succesDl" style="display: none;">
+					<div class="uk-alert-success" uk-alert>
+						<a class="uk-alert-close" uk-close></a>
+						<p><div id="path"></div></p>
+					</div>
+				</div>			 
+			</div>
+		</div>
+	</div>
+</div>
+
+</div>
+
+
+
+<div id="masterPass" uk-modal>
+    <div class="uk-modal-dialog">
+ 
+        <div class="uk-modal-header">
+            <h2 class="uk-modal-title"><img src="css/1.gif" width="30" height="30"> Ajouter une licence</h2>
+        </div>
+        <div class="uk-modal-body">
+            
+			<form  action="">
+				<fieldset class="uk-fieldset">
+					<div class="uk-margin">
+						<input class="uk-input" type="text" placeholder="atmon3r" id="userName">
+						<div id="showLicence" style="display: none;">
+						<input class="uk-input" type="text" placeholder="532D8-V5428-HUZAF-CEA24-E4CDE-F4015" id="pass">
+						</div>
+					</div>
+					<p>Pour creer une licence gratuitement, me contacter: contact.atmoner@gmail.com </p>
+				</fieldset>
+			</form>
+			
+        </div>
+        <div class="uk-modal-footer uk-text-right"> 
+			<button class="uk-button uk-button-primary" id="addPass">Ajouter</button>
+			<div id="addKeyButton" style="display: none;">
+				<button class="uk-button uk-button-primary" id="addKey">Ajouter clef</button>
+			</div>
+        </div>
+    </div>
+
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+  </body>
+</html>
+ 
